@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Thodex.Net</PackageId>
+    <Authors>Burak Öner</Authors>
+    <PackageVersion>1.1.2</PackageVersion>
+    <Description>Thodex.Net is a .Net wrapper for the Thodex API. It includes supports all endpoints</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>Thodex Thodex.Net C# .Net CryptoCurrency Exchange API Wrapper</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>
+Version 1.1.2 - 27 Dec 2020
+- Fixed WS-Api Order Book null value bug
+- Fixed some other bugs
+
+Version 1.1.0 - 26 Dec 2020
+- Added Undocumented Public Web-Socket Api Support
+
+Version 1.0.0 - 23 Dec 2020
+- First Release
+    </PackageReleaseNotes>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageProjectUrl>https://github.com/burakoner/Thodex.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/burakoner/Thodex.Net</RepositoryUrl>
+    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Icon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CryptoExchange.Net" Version="3.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
