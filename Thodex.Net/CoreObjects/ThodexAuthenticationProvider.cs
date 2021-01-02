@@ -52,7 +52,7 @@ namespace Thodex.Net.CoreObjects
                 var apiSecret = Credentials.Secret.GetString();
                 var signparams = new SortedDictionary<string, object>(parameters);
                 var signstring = string.Join("&", signparams.Select(x => $"{x.Key}={WebUtility.UrlEncode(x.Value.ToString())}")) + $"&secret={apiSecret}";
-                var signature = this.SHA256Hash(signstring);
+                var signature = ThodexAuthenticationProvider.SHA256Hash(signstring);
 
                 return new Dictionary<string, string> {
                     { "Authorization", signature },
@@ -67,7 +67,7 @@ namespace Thodex.Net.CoreObjects
             return System.Convert.ToInt32((DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds);
         }
 
-        private string SHA256Hash(string rawData)
+        public static string SHA256Hash(string rawData)
         { 
             using (var sha256Hash = SHA256.Create())
             {

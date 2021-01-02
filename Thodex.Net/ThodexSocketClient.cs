@@ -22,6 +22,7 @@ using Thodex.Net.Enums;
 using Thodex.Net.Converters;
 using Thodex.Net.Helpers;
 using CryptoExchange.Net.Converters;
+using System.Net;
 
 namespace Thodex.Net
 {
@@ -30,6 +31,8 @@ namespace Thodex.Net
     /// </summary>
     public partial class ThodexSocketClient : SocketClient, ISocketClient
     {
+        public bool Authendicated { get; private set; }
+
         #region WS-Methods
         /* Account Balance (Private) */
         private const string WSMethods_Asset_Query = "asset.query";
@@ -138,7 +141,7 @@ namespace Thodex.Net
             var pot = DateTime.UtcNow;
             sw.Stop();
 
-            var result = new ThodexSocketPingPong { PingTime = pit, PongTime = pot, Latency = sw.Elapsed, PongMessage =response.Data.Data };
+            var result = new ThodexSocketPingPong { PingTime = pit, PongTime = pot, Latency = sw.Elapsed, PongMessage = response.Data.Data };
             return new CallResult<ThodexSocketPingPong>(result, response.Error);
         }
 
@@ -260,7 +263,7 @@ namespace Thodex.Net
             var request = new ThodexSocketRequest(this.NextRequestId(), WSMethods_Price_Subscribe, symbols);
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
-        
+
         public CallResult<UpdateSubscription> SubscribeToState(IEnumerable<string> symbols, Action<ThodexSocketState> onData) => SubscribeToStateAsync(symbols, onData).Result;
         public async Task<CallResult<UpdateSubscription>> SubscribeToStateAsync(IEnumerable<string> symbols, Action<ThodexSocketState> onData)
         {
@@ -291,7 +294,7 @@ namespace Thodex.Net
             var request = new ThodexSocketRequest(this.NextRequestId(), WSMethods_State_Subscribe, symbols);
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
-        
+
         public CallResult<UpdateSubscription> SubscribeToToday(IEnumerable<string> symbols, Action<ThodexSocketToday> onData) => SubscribeToTodayAsync(symbols, onData).Result;
         public async Task<CallResult<UpdateSubscription>> SubscribeToTodayAsync(IEnumerable<string> symbols, Action<ThodexSocketToday> onData)
         {
@@ -459,9 +462,49 @@ namespace Thodex.Net
             return false;
         }
 
-        protected override Task<CallResult<bool>> AuthenticateSocket(SocketConnection s)
+        protected override async Task<CallResult<bool>> AuthenticateSocket(SocketConnection s)
         {
-            throw new NotImplementedException();
+            if (authProvider == null)
+                return new CallResult<bool>(false, new NoApiCredentialsError());
+
+            var ap = (ThodexAuthenticationProvider)authProvider;
+            var key = ap.Credentials.Key.GetString();
+            var secret = ap.Credentials.Secret.GetString();
+            if (string.IsNullOrEmpty(key) || string.IsNullOrEmpty(secret))
+                return new CallResult<bool>(false, new NoApiCredentialsError());
+
+            var id = NextRequestId();
+            var tonce = DateTime.UtcNow.ToUnixTimeSeconds();//.ToString();
+            var signparams = new SortedDictionary<string, object>();
+            signparams.Add("access_id", key);
+            signparams.Add("tonce", tonce);
+            var signstring = string.Join("&", signparams.Select(x => $"{x.Key}={WebUtility.UrlEncode(x.Value.ToString())}")) + $"&secret={secret}";
+            var signature = ThodexAuthenticationProvider.SHA256Hash(signstring);
+
+            var request = new ThodexSocketRequest(id, WSMethods_ServerSign_Query, key, signature, tonce);
+            var response = await Query<ThodexSocketQueryResponse<int>>(request, false).ConfigureAwait(true);
+            var result = new CallResult<bool>(false, new ServerError("No response from server"));
+            await s.SendAndWait(request, ResponseTimeout, data =>
+            {
+                if (data["id"] == null || (long?)data["id"] != id)
+                    return false;
+
+                if (data["error"] != null && data["error"]["code"] != null && data["error"]["message"] != null)
+                {
+                    var code = (int?)data["error"]["code"]; if (!code.HasValue) code = 0;
+                    var message = (string)data["error"]["message"]; if (string.IsNullOrEmpty(message)) message = string.Empty;
+                    log.Write(LogVerbosity.Warning, "Authorization failed: " + message);
+                    result = new CallResult<bool>(false, new ServerError(code.Value, message));
+                    return true;
+                }
+
+                log.Write(LogVerbosity.Debug, "Authorization completed");
+                result = new CallResult<bool>(true, null);
+                this.Authendicated = true;
+                return true;
+            });
+
+            return result;
         }
 
         private long iterator = 0;

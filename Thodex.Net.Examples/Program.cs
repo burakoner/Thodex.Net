@@ -1,4 +1,5 @@
-﻿using CryptoExchange.Net.Logging;
+﻿using CryptoExchange.Net.Authentication;
+using CryptoExchange.Net.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -15,6 +15,11 @@ namespace Thodex.Net.CoreObjects
         [JsonProperty("params")]
         public List<object> Params { get; set; }
 
+        public ThodexSocketRequest()
+        {
+            this.Params = new List<object>();
+        }
+
         public ThodexSocketRequest(long id, string method, params object[] args)
         {
             this.RequestId = id;
