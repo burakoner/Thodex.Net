@@ -2,21 +2,21 @@
 
 namespace Thodex.Net.CoreObjects
 {
-    internal class ThodexApiResponse<T>
+    public class ThodexApiResponse<T>
     {
         [JsonProperty("error")]
-        internal ThodexApiError Error { get; set; }
+        public ThodexApiError Error { get; set; }
         
         [JsonProperty("result")]
         public T Data { get; set; }
     }
 
-    internal class ThodexApiError
+    public class ThodexApiError
     {
         [JsonProperty("code")]
-        internal int ErrorCode { get; set; }
+        public int ErrorCode { get; set; }
 
         [JsonProperty("message")]
-        internal string ErrorMessage { get; set; } = "";
+        public string ErrorMessage { get; set; } = "";
     }
 }

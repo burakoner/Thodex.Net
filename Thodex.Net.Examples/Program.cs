@@ -11,7 +11,6 @@ namespace Thodex.Net.Examples
     {
         static void Main(string[] args)
         {
-            // var api = new ThodexClient(new ThodexClientOptions { LogVerbosity = LogVerbosity.Debug });
             var api = new ThodexClient();
             api.SetApiCredentials("XXXXXXXX-API-KEY-XXXXXXXX", "XXXXXXXX-API-SECRET-XXXXXXXX");
             

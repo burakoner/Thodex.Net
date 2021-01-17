@@ -4,7 +4,7 @@ using Thodex.Net.Enums;
 
 namespace Thodex.Net.Converters
 {
-    internal class TraderRoleConverter : BaseConverter<ThodexTraderRole>
+    public class TraderRoleConverter : BaseConverter<ThodexTraderRole>
     {
         public TraderRoleConverter() : this(true) { }
         public TraderRoleConverter(bool quotes) : base(quotes) { }
