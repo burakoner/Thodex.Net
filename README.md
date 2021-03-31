@@ -102,6 +102,10 @@ Implementations from third parties:
 <br />
 <a href="https://github.com/Zaliro/Switcheo.Net">Switcheo</a>
 </td>
+<td><a href="https://github.com/d-ugarov/Exante.Net"><img src="https://github.com/d-ugarov/Exante.Net/blob/master/Exante.Net/Icon/icon.png?raw=true"></a>
+<br />
+<a href="https://github.com/d-ugarov/Exante.Net">Exante</a>
+</td>
 </tr>
 </table>
 
@@ -231,6 +235,9 @@ var ws06 = ws.SubscribeToToday(symbols, (data) =>
 ```
 
 ## Release Notes
+* Version 2.1.0 - 31 Mar 2021
+    * Updated dependencies
+
 * Version 2.0.1 - 01 Feb 2021
     * Updated CryptoExchange.Net to 3.6.0
 
