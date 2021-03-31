@@ -31,76 +31,76 @@ namespace Thodex.Net
     /// </summary>
     public partial class ThodexSocketClient : SocketClient, ISocketClient
     {
-        public bool Authendicated { get; private set; }
+        public bool Authendicated { get; protected set; }
 
         #region WS-Methods
         /* Account Balance (Private) */
-        private const string WSMethods_Asset_Query = "asset.query";
-        private const string WSMethods_Asset_Update = "asset.update";
-        private const string WSMethods_Asset_Subscribe = "asset.subscribe";
-        private const string WSMethods_Asset_Unsubscribe = "asset.unsubscribe";
-        private const string WSMethods_Asset_History = "asset.history";
+        protected const string WSMethods_Asset_Query = "asset.query";
+        protected const string WSMethods_Asset_Update = "asset.update";
+        protected const string WSMethods_Asset_Subscribe = "asset.subscribe";
+        protected const string WSMethods_Asset_Unsubscribe = "asset.unsubscribe";
+        protected const string WSMethods_Asset_History = "asset.history";
 
         /* Trades (Public) */
-        private const string WSMethods_Deals_Query = "deals.query";
-        private const string WSMethods_Deals_Update = "deals.update";
-        private const string WSMethods_Deals_Subscribe = "deals.subscribe";
-        private const string WSMethods_Deals_Unsubscribe = "deals.unsubscribe";
+        protected const string WSMethods_Deals_Query = "deals.query";
+        protected const string WSMethods_Deals_Update = "deals.update";
+        protected const string WSMethods_Deals_Subscribe = "deals.subscribe";
+        protected const string WSMethods_Deals_Unsubscribe = "deals.unsubscribe";
 
         /* Order Book (Public) */
-        private const string WSMethods_Depth_Query = "depth.query";
-        private const string WSMethods_Depth_Update = "depth.update";
-        private const string WSMethods_Depth_Subscribe = "depth.subscribe";
-        private const string WSMethods_Depth_Unsubscribe = "depth.unsubscribe";
+        protected const string WSMethods_Depth_Query = "depth.query";
+        protected const string WSMethods_Depth_Update = "depth.update";
+        protected const string WSMethods_Depth_Subscribe = "depth.subscribe";
+        protected const string WSMethods_Depth_Unsubscribe = "depth.unsubscribe";
 
         /* Klines (Public) */
-        private const string WSMethods_Kline_Query = "kline.query";
-        private const string WSMethods_Kline_Update = "kline.update";
-        private const string WSMethods_Kline_Subscribe = "kline.subscribe";
-        private const string WSMethods_Kline_Unsubscribe = "kline.unsubscribe";
+        protected const string WSMethods_Kline_Query = "kline.query";
+        protected const string WSMethods_Kline_Update = "kline.update";
+        protected const string WSMethods_Kline_Subscribe = "kline.subscribe";
+        protected const string WSMethods_Kline_Unsubscribe = "kline.unsubscribe";
 
         /* Order Tracker (Private) */
-        private const string WSMethods_Order_Query = "order.query";
-        private const string WSMethods_Order_Update = "order.update";
-        private const string WSMethods_Order_Subscribe = "order.subscribe";
-        private const string WSMethods_Order_Unsubscribe = "order.unsubscribe";
-        private const string WSMethods_Order_History = "order.history";
+        protected const string WSMethods_Order_Query = "order.query";
+        protected const string WSMethods_Order_Update = "order.update";
+        protected const string WSMethods_Order_Subscribe = "order.subscribe";
+        protected const string WSMethods_Order_Unsubscribe = "order.unsubscribe";
+        protected const string WSMethods_Order_History = "order.history";
 
         /* Price Updates (Public) */
-        private const string WSMethods_Price_Query = "price.query";
-        private const string WSMethods_Price_Update = "price.update";
-        private const string WSMethods_Price_Subscribe = "price.subscribe";
-        private const string WSMethods_Price_Unsubscribe = "price.unsubscribe";
+        protected const string WSMethods_Price_Query = "price.query";
+        protected const string WSMethods_Price_Update = "price.update";
+        protected const string WSMethods_Price_Subscribe = "price.subscribe";
+        protected const string WSMethods_Price_Unsubscribe = "price.unsubscribe";
 
         /* State Updates (Public) */
-        private const string WSMethods_State_Query = "state.query";
-        private const string WSMethods_State_Update = "state.update";
-        private const string WSMethods_State_Subscribe = "state.subscribe";
-        private const string WSMethods_State_Unsubscribe = "state.unsubscribe";
+        protected const string WSMethods_State_Query = "state.query";
+        protected const string WSMethods_State_Update = "state.update";
+        protected const string WSMethods_State_Subscribe = "state.subscribe";
+        protected const string WSMethods_State_Unsubscribe = "state.unsubscribe";
 
         /* StopLoss Tracker ? (Private) */
-        private const string WSMethods_StopLoss_Query = "stoploss.query";
-        private const string WSMethods_StopLoss_Update = "stoploss.update";
-        private const string WSMethods_StopLoss_Subscribe = "stoploss.subscribe";
-        private const string WSMethods_StopLoss_Unsubscribe = "stoploss.unsubscribe";
-        private const string WSMethods_StopLoss_History = "stoploss.history";
+        protected const string WSMethods_StopLoss_Query = "stoploss.query";
+        protected const string WSMethods_StopLoss_Update = "stoploss.update";
+        protected const string WSMethods_StopLoss_Subscribe = "stoploss.subscribe";
+        protected const string WSMethods_StopLoss_Unsubscribe = "stoploss.unsubscribe";
+        protected const string WSMethods_StopLoss_History = "stoploss.history";
 
         /* Today Updates (Public) */
-        private const string WSMethods_Today_Query = "today.query";
-        private const string WSMethods_Today_Update = "today.update";
-        private const string WSMethods_Today_Subscribe = "today.subscribe";
-        private const string WSMethods_Today_Unsubscribe = "today.unsubscribe";
+        protected const string WSMethods_Today_Query = "today.query";
+        protected const string WSMethods_Today_Update = "today.update";
+        protected const string WSMethods_Today_Subscribe = "today.subscribe";
+        protected const string WSMethods_Today_Unsubscribe = "today.unsubscribe";
 
         /* Server Queries */
-        private const string WSMethods_ServerAuth_Query = "server.auth";
-        private const string WSMethods_ServerPing_Query = "server.ping";
-        private const string WSMethods_ServerSign_Query = "server.sign";
-        private const string WSMethods_ServerTime_Query = "server.time";
+        protected const string WSMethods_ServerAuth_Query = "server.auth";
+        protected const string WSMethods_ServerPing_Query = "server.ping";
+        protected const string WSMethods_ServerSign_Query = "server.sign";
+        protected const string WSMethods_ServerTime_Query = "server.time";
         #endregion
 
         #region Client Options
-        private static ThodexSocketClientOptions defaultOptions = new ThodexSocketClientOptions();
-        private static ThodexSocketClientOptions DefaultOptions => defaultOptions.Copy();
+        protected static ThodexSocketClientOptions defaultOptions = new ThodexSocketClientOptions();
+        protected static ThodexSocketClientOptions DefaultOptions => defaultOptions.Copy();
         #endregion
 
         #region Constructor/Destructor
@@ -131,8 +131,8 @@ namespace Thodex.Net
         }
         #endregion
 
-        public CallResult<ThodexSocketPingPong> Ping() => PingAsync().Result;
-        public async Task<CallResult<ThodexSocketPingPong>> PingAsync()
+        public virtual CallResult<ThodexSocketPingPong> Ping() => PingAsync().Result;
+        public virtual async Task<CallResult<ThodexSocketPingPong>> PingAsync()
         {
             var pit = DateTime.UtcNow;
             var sw = Stopwatch.StartNew();
@@ -145,8 +145,8 @@ namespace Thodex.Net
             return new CallResult<ThodexSocketPingPong>(result, response.Error);
         }
 
-        public CallResult<DateTime> Time() => TimeAsync().Result;
-        public async Task<CallResult<DateTime>> TimeAsync()
+        public virtual CallResult<DateTime> Time() => TimeAsync().Result;
+        public virtual async Task<CallResult<DateTime>> TimeAsync()
         {
             var request = new ThodexSocketRequest(this.NextRequestId(), WSMethods_ServerTime_Query);
             var response = await Query<ThodexSocketQueryResponse<int>>(request, false).ConfigureAwait(true);
@@ -154,8 +154,8 @@ namespace Thodex.Net
             return new CallResult<DateTime>(response.Data.Data.FromUnixTimeSeconds(), response.Error);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToDeals(IEnumerable<string> symbols, Action<ThodexSocketDeal> onData) => SubscribeToDealsAsync(symbols, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToDealsAsync(IEnumerable<string> symbols, Action<ThodexSocketDeal> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToDeals(IEnumerable<string> symbols, Action<ThodexSocketDeal> onData) => SubscribeToDealsAsync(symbols, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToDealsAsync(IEnumerable<string> symbols, Action<ThodexSocketDeal> onData)
         {
             // To List
             var symbolList = symbols.ToList();
@@ -188,8 +188,8 @@ namespace Thodex.Net
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToOrderBook(string symbol, Action<ThodexSocketOrderBook> onData) => SubscribeToOrderBookAsync(symbol, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToOrderBookAsync(string symbol, Action<ThodexSocketOrderBook> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToOrderBook(string symbol, Action<ThodexSocketOrderBook> onData) => SubscribeToOrderBookAsync(symbol, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToOrderBookAsync(string symbol, Action<ThodexSocketOrderBook> onData)
         {
             var internalHandler = new Action<ThodexSocketUpdateResponse>(data =>
             {
@@ -207,8 +207,8 @@ namespace Thodex.Net
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToKlines(string symbol, ThodexPeriod period, Action<ThodexSocketCandle> onData) => SubscribeToKlinesAsync(symbol, period, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToKlinesAsync(string symbol, ThodexPeriod period, Action<ThodexSocketCandle> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToKlines(string symbol, ThodexPeriod period, Action<ThodexSocketCandle> onData) => SubscribeToKlinesAsync(symbol, period, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToKlinesAsync(string symbol, ThodexPeriod period, Action<ThodexSocketCandle> onData)
         {
             var internalHandler = new Action<ThodexSocketUpdateResponse>(data =>
             {
@@ -235,8 +235,8 @@ namespace Thodex.Net
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToPrice(IEnumerable<string> symbols, Action<ThodexSocketPrice> onData) => SubscribeToPriceAsync(symbols, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToPriceAsync(IEnumerable<string> symbols, Action<ThodexSocketPrice> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToPrice(IEnumerable<string> symbols, Action<ThodexSocketPrice> onData) => SubscribeToPriceAsync(symbols, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToPriceAsync(IEnumerable<string> symbols, Action<ThodexSocketPrice> onData)
         {
             // To List
             var symbolList = symbols.ToList();
@@ -264,8 +264,8 @@ namespace Thodex.Net
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToState(IEnumerable<string> symbols, Action<ThodexSocketState> onData) => SubscribeToStateAsync(symbols, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToStateAsync(IEnumerable<string> symbols, Action<ThodexSocketState> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToState(IEnumerable<string> symbols, Action<ThodexSocketState> onData) => SubscribeToStateAsync(symbols, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToStateAsync(IEnumerable<string> symbols, Action<ThodexSocketState> onData)
         {
             // To List
             var symbolList = symbols.ToList();
@@ -295,8 +295,8 @@ namespace Thodex.Net
             return await Subscribe(request, null, false, internalHandler).ConfigureAwait(false);
         }
 
-        public CallResult<UpdateSubscription> SubscribeToToday(IEnumerable<string> symbols, Action<ThodexSocketToday> onData) => SubscribeToTodayAsync(symbols, onData).Result;
-        public async Task<CallResult<UpdateSubscription>> SubscribeToTodayAsync(IEnumerable<string> symbols, Action<ThodexSocketToday> onData)
+        public virtual CallResult<UpdateSubscription> SubscribeToToday(IEnumerable<string> symbols, Action<ThodexSocketToday> onData) => SubscribeToTodayAsync(symbols, onData).Result;
+        public virtual async Task<CallResult<UpdateSubscription>> SubscribeToTodayAsync(IEnumerable<string> symbols, Action<ThodexSocketToday> onData)
         {
             // To List
             var symbolList = symbols.ToList();
@@ -327,7 +327,17 @@ namespace Thodex.Net
         }
 
         #region Core Methods
+        protected long iterator = 0;
+        protected virtual long NextRequestId()
+        {
+            return ++iterator;
+        }
+
         protected override bool HandleQueryResponse<T>(SocketConnection s, object request, JToken data, out CallResult<T> callResult)
+        {
+            return this.ThodexHandleQueryResponse<T>(s, request, data, out callResult);
+        }
+        protected virtual bool ThodexHandleQueryResponse<T>(SocketConnection s, object request, JToken data, out CallResult<T> callResult)
         {
             callResult = new CallResult<T>(default, null);
 
@@ -355,6 +365,10 @@ namespace Thodex.Net
 
         protected override bool HandleSubscriptionResponse(SocketConnection s, SocketSubscription subscription, object request, JToken message, out CallResult<object> callResult)
         {
+            return this.ThodexHandleSubscriptionResponse(s, subscription, request, message, out callResult);
+        }
+        protected virtual bool ThodexHandleSubscriptionResponse(SocketConnection s, SocketSubscription subscription, object request, JToken message, out CallResult<object> callResult)
+        {
             var MSG = message.ToString();
             callResult = null;
 
@@ -380,6 +394,10 @@ namespace Thodex.Net
         }
 
         protected override bool MessageMatchesHandler(JToken data, object request)
+        {
+            return this.ThodexMessageMatchesHandler(data, request);
+        }
+        protected virtual bool ThodexMessageMatchesHandler(JToken data, object request)
         {
             if (request is ThodexSocketRequest hRequest)
             {
@@ -435,10 +453,18 @@ namespace Thodex.Net
 
         protected override bool MessageMatchesHandler(JToken message, string identifier)
         {
+            return this.ThodexMessageMatchesHandler(message, identifier);
+        }
+        protected virtual bool ThodexMessageMatchesHandler(JToken message, string identifier)
+        {
             return true;
         }
 
         protected override async Task<bool> Unsubscribe(SocketConnection connection, SocketSubscription s)
+        {
+            return await this.ThodexUnsubscribe(connection, s);
+        }
+        protected virtual async Task<bool> ThodexUnsubscribe(SocketConnection connection, SocketSubscription s)
         {
             if (s == null || s.Request == null)
                 return false;
@@ -464,6 +490,10 @@ namespace Thodex.Net
 
         protected override async Task<CallResult<bool>> AuthenticateSocket(SocketConnection s)
         {
+            return await this.ThodexAuthenticateSocket(s);
+        }
+        protected virtual async Task<CallResult<bool>> ThodexAuthenticateSocket(SocketConnection s)
+        {
             if (authProvider == null)
                 return new CallResult<bool>(false, new NoApiCredentialsError());
 
@@ -482,6 +512,7 @@ namespace Thodex.Net
             var signature = ThodexAuthenticationProvider.SHA256Hash(signstring);
 
             var request = new ThodexSocketRequest(id, WSMethods_ServerSign_Query, key, signature, tonce);
+            // var msg = JsonConvert.SerializeObject(request);
             var response = await Query<ThodexSocketQueryResponse<int>>(request, false).ConfigureAwait(true);
             var result = new CallResult<bool>(false, new ServerError("No response from server"));
             await s.SendAndWait(request, ResponseTimeout, data =>
@@ -505,12 +536,6 @@ namespace Thodex.Net
             });
 
             return result;
-        }
-
-        private long iterator = 0;
-        protected long NextRequestId()
-        {
-            return ++iterator;
         }
 
         #endregion

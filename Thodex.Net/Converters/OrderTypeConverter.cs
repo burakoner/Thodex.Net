@@ -4,7 +4,7 @@ using Thodex.Net.Enums;
 
 namespace Thodex.Net.Converters
 {
-    internal class OrderTypeConverter : BaseConverter<ThodexOrderType>
+    public class OrderTypeConverter : BaseConverter<ThodexOrderType>
     {
         public OrderTypeConverter() : this(true) { }
         public OrderTypeConverter(bool quotes) : base(quotes) { }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Thodex.Net.CoreObjects
 {
-    internal class ThodexSocketRequest
+    public class ThodexSocketRequest
     {
         [JsonProperty("id")]
         public long RequestId { get; set; }

@@ -7,30 +7,30 @@ namespace Thodex.Net.CoreObjects
     public class ThodexSocketQueryResponse<T>
     {
         [JsonProperty("id")]
-        internal long RequestId { get; set; }
+        public long RequestId { get; set; }
 
         [JsonProperty("error")]
-        internal object Error { get; set; }
+        public object Error { get; set; }
 
         [JsonProperty("result")]
-        internal T Data { get; set; }
+        public T Data { get; set; }
     }
     
     public class ThodexSocketUpdateResponse
     {
         [JsonProperty("id")]
-        internal long? RequestId { get; set; }
+        public long? RequestId { get; set; }
 
         [JsonProperty("method")]
-        internal string Method { get; set; }
+        public string Method { get; set; }
 
         [JsonProperty("params")]
-        internal List<object> Data { get; set; }
+        public List<object> Data { get; set; }
     }
 
     public class ThodexSocketFeedback
     {
         [JsonProperty("status")]
-        internal string Status { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -38,6 +38,10 @@ My CryptoExchange.Net implementations:
 <br />
 <a href="https://github.com/burakoner/Coinzo.Net">Coinzo</a>
 </td>
+<td><a href="https://github.com/burakoner/Tatum.Net"><img src="https://github.com/burakoner/Tatum.Net/blob/master/Tatum.Net/Icon/icon.png?raw=true"></a>
+<br />
+<a href="https://github.com/burakoner/Tatum.Net">Tatum</a>
+</td>
 </tr>
 </table>
 
@@ -81,6 +85,10 @@ Implementations from third parties:
 <td><a href="https://github.com/ridicoulous/Bitmex.Net"><img src="https://github.com/ridicoulous/Bitmex.Net/blob/master/Bitmex.Net/Icon/icon.png"></a>
 <br />
 <a href="https://github.com/ridicoulous/Bitmex.Net">Bitmex</a>
+</td>
+<td><a href="https://github.com/d-ugarov/Exante.Net"><img src="https://github.com/d-ugarov/Exante.Net/blob/master/Exante.Net/Icon/icon.png?raw=true"></a>
+<br />
+<a href="https://github.com/d-ugarov/Exante.Net">Exante</a>
 </td>
 <td><a href="https://github.com/intelligences/HitBTC.Net"><img src="https://github.com/intelligences/HitBTC.Net/blob/master/src/HitBTC.Net/Icon/icon.png?raw=true"></a>
 <br />
@@ -231,6 +239,19 @@ var ws06 = ws.SubscribeToToday(symbols, (data) =>
 ```
 
 ## Release Notes
+* Version 2.1.0 - 31 Mar 2021
+    * Updated dependencies
+
+* Version 2.0.1 - 01 Feb 2021
+    * Updated CryptoExchange.Net to 3.6.0
+
+* Version 2.0.0 - 17 Jan 2021
+    * All methods are virtual now. You can customize methods by overriding.
+    * Fixed several minor bugs
+
+* Version 1.2.8 - 12 Jan 2021
+    * Updated CryptoExchange.Net to 3.5.0
+
 * Version 1.1.3 - 02 Jan 2021
     * Fixed minor bugs
 

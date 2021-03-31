@@ -4,7 +4,7 @@ using Thodex.Net.Enums;
 
 namespace Thodex.Net.Converters
 {
-    internal class PeriodConverter : BaseConverter<ThodexPeriod>
+    public class PeriodConverter : BaseConverter<ThodexPeriod>
     {
         public PeriodConverter() : this(true) { }
         public PeriodConverter(bool quotes) : base(quotes) { }
